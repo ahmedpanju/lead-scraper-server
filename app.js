@@ -29,8 +29,10 @@ app.use((req, res, next) => {
 });
 
 const github = require("./src/routes/github");
+const airtable = require("./src/routes/airtable");
 
 app.use("/github", github);
+app.use("/airtable", airtable);
 
 app.use((req, res, next) => {
   const error = new Error("Not Found");
