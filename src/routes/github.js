@@ -40,23 +40,23 @@ router.post("/new-query", async (req, res) => {
         });
 
         finalUserList.push({
-          name: R.pathOr("N/A", ["data", "name"], singleUserData),
-          username: R.pathOr("N/A", ["data", "login"], singleUserData),
-          email: R.pathOr("N/A", ["data", "email"], singleUserData),
-          bio: R.pathOr("N/A", ["data", "bio"], singleUserData),
+          name: R.pathOr(null, ["data", "name"], singleUserData),
+          username: R.pathOr(null, ["data", "login"], singleUserData),
+          email: R.pathOr(null, ["data", "email"], singleUserData),
+          bio: R.pathOr(null, ["data", "bio"], singleUserData),
           hireable: R.path(["data", "hireable"], singleUserData) ? "Yes" : "No",
           twitter: R.path(["data", "twitter_username"], singleUserData)
             ? `https://www.twitter.com/${R.path(
                 ["data", "twitter_username"],
                 singleUserData
               )}`
-            : "N/A",
-          githubProfile: R.pathOr("N/A", ["data", "html_url"], singleUserData),
-          location: R.pathOr("N/A", ["data", "location"], singleUserData),
-          company: R.pathOr("N/A", ["data", "company"], singleUserData),
+            : null,
+          githubProfile: R.pathOr(null, ["data", "html_url"], singleUserData),
+          location: R.pathOr(null, ["data", "location"], singleUserData),
+          company: R.pathOr(null, ["data", "company"], singleUserData),
           blog: !!R.path(["data", "blog"], singleUserData)
             ? R.path(["data", "blog"], singleUserData)
-            : "N/A",
+            : null,
         });
         finalUserListCsv.push([
           R.pathOr("N/A", ["data", "name"], singleUserData),

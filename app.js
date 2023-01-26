@@ -30,9 +30,13 @@ app.use((req, res, next) => {
 
 const github = require("./src/routes/github");
 const airtable = require("./src/routes/airtable");
+const openAi = require("./src/routes/openAi");
+const twitter = require("./src/routes/twitter");
 
 app.use("/github", github);
 app.use("/airtable", airtable);
+app.use("/openAi", openAi);
+app.use("/twitter", twitter);
 
 app.use((req, res, next) => {
   const error = new Error("Not Found");
