@@ -11,20 +11,16 @@ router.post("/add-record", async (req, res) => {
   try {
     const base = Airtable.base(process.env.AIRTABLE_DEV_LEADS);
 
-    base('Dev Leads ("ai dev followers:>50")').create(
+    base("The Big AI Night Leads").create(
       [
         {
           fields: {
             Name: req.body.name,
             Bio: req.body.bio,
-            Hireable: req.body.hireable,
             Username: req.body.username,
             Email: req.body.email,
-            Twitter: req.body.twitter,
             Location: req.body.location,
-            Github: req.body.githubProfile,
             Company: req.body.company,
-            Blog: req.body.blog,
           },
         },
       ],
@@ -47,7 +43,7 @@ router.get("/fetch-all", async (req, res) => {
   let finalRecords = [];
   try {
     const base = Airtable.base(process.env.AIRTABLE_DEV_LEADS);
-    base('Dev Leads ("ai dev followers:>50")')
+    base("The Big AI Night Leads")
       .select({
         maxRecords: 100,
         view: "Grid view",
